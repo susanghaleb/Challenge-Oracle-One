@@ -5,6 +5,8 @@
   const textDescriptionCaption = document.querySelector(
     ".text-description-caption"
   );
+  const textSalida = document.getElementById("text-input-salida");
+  const muneco = document.getElementById("muneco");
 
   const buttonEncriptar = document.getElementById("encriptar");
   const buttonDesEncriptar = document.getElementById("desencriptar");
@@ -21,7 +23,9 @@
     textInfoLabel.classList.add("hidden");
     textDescriptionCaption.classList.add("hidden");
     buttonCopy.classList.remove("hidden");
+    textSalida.classList.remove("hidden");
     buttonCopy.classList.add("show");
+    muneco.classList.add("hidden");
     input.value = "";
   }
 

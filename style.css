@@ -3,8 +3,8 @@
   /* Sizes */
   --max-height-full-screen: 1024px;
   --desktop-breakpoint: 1440px;
-  --tablet-breakpoint: 768px;
-  --mobile-breakpoint: 375px;
+  --tablet-breakpoint: 1439px;
+  --mobile-breakpoint: 767px;
 
   /* Colors */
 
@@ -61,8 +61,17 @@ textarea {
 }
 
 .main {
+  display: flex;
+  flex-direction: row;
   height: var(--full-height);
   background-color: var(--dark-light-100);
+  padding: 40px;
+}
+
+.logo {
+  margin-left: 50px;
+  margin-top: 50px;
+  margin-bottom: 80px;
 }
 
 .hidden {
@@ -73,8 +82,13 @@ textarea {
 }
 
 .box-text-area {
+  flex: 1;
   font-family: "Inter", sans-serif;
   background-color: var(--dark-light-100);
+  border-style: none;
+  color: var(--dark-blue-300);
+  line-height: 150%;
+  font-size: 32px;
 }
 
 .box-text-area::placeholder {
@@ -82,15 +96,33 @@ textarea {
 }
 
 .texto-encriptado {
+  flex: 1;
   font-family: "Inter", sans-serif;
   font-size: 24px;
-  font-weight: regular;
+  font-weight: 400;
   line-height: 150%;
+}
+
+.wrapper-section-text-and-buttons {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 80px 0 240px;
+}
+
+.section-buttons {
+  display: flex;
+}
+
+.section-buttons > .btn-primary {
+  margin-right: 5%;
 }
 
 .btn {
   border-radius: 24px;
   border-width: 0px;
+  min-width: 231px;
+  height: 67px;
   width: 100%;
   text-align: center;
 }
@@ -107,23 +139,46 @@ textarea {
 }
 
 .box-text-info {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: var(--color-white);
   border-radius: 32px;
   padding: 32px;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .text-info-label {
   font-family: "Inter", sans-serif;
-  display: flex;
-  align-self: stretch;
+  max-width: 232px;
   font-weight: bold;
   color: var(--gray-500);
+  font-size: 24px;
+  text-align: center;
+  line-height: 120%;
+  margin-bottom: 16px;
 }
 .text-description-caption {
   font-family: "Inter", sans-serif;
   color: var(--gray-400);
   text-align: center;
+  max-width: 295px;
+}
+
+.wrap-text {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.instructions {
+  font-size: var(--font-caption);
+  margin: 0 0 0 10px;
+  width: 100%;
 }
 
 /* Icons */
@@ -132,25 +187,68 @@ textarea {
   width: 16px;
   height: 16px;
 }
+.image-not-found {
+  width: 336px;
+  height: 304;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-bottom: 31px;
+}
 
 /* Desktop css */
 
-@media (max-width: 1440px) {
-  .main {
-    max-width: var(--desktop-breakpoint);
-    padding-bottom: 40px;
-  }
-}
-
 /* Tablet css */
-@media (max-width: 768px) {
+@media (max-width: 1439px) {
   .main {
     max-width: var(--tablet-breakpoint);
+    flex-direction: column;
+    padding-top: 74px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .image-not-found {
+    display: none;
+  }
+  .logo {
+    margin-bottom: 116px;
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .wrapper {
+    flex-direction: column;
+    padding-bottom: 35px;
+  }
+  .box-text-area {
+    min-height: 308px;
+    width: 100%;
+  }
+  .wrapper-section-text-and-buttons {
+    padding: 0;
+  }
+  .section-buttons {
+    display: flex;
+    margin-bottom: 64px;
+  }
+  .section-buttons > .btn-primary {
+    margin-right: 5%;
+  }
+
+  .texto-encriptado {
+    padding-bottom: 32px;
+    width: 100%;
+  }
+
+  .box-text-info {
+    height: auto;
   }
 }
 
 /* Mobile */
-@media (max-width: 375px) {
+@media (max-width: 767px) {
   .main {
     max-width: var(--mobile-breakpoint);
     padding-top: 24px;
@@ -170,21 +268,12 @@ textarea {
     line-height: 150%;
   }
 
-  .wrap-text {
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
   .exclamation {
     width: 16px;
     height: 16px;
   }
 
   .section-buttons {
-    margin-bottom: 64px;
   }
 
   .btn {
@@ -194,16 +283,16 @@ textarea {
     margin-bottom: 24px;
   }
 
-  .instructions {
-    font-size: var(--font-caption);
-    margin: 0 0 0 10px;
-    width: 100%;
-  }
-
   .text-info-label {
     font-size: 24px;
     text-align: center;
     line-height: 120%;
     margin-bottom: 16px;
+  }
+
+  @media (max-width: 524px) {
+    .section-buttons {
+      flex-direction: column;
+    }
   }
 }
