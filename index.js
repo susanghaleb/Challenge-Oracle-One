@@ -1,5 +1,6 @@
 (() => {
   const input = document.getElementById("box");
+  input.value = "";
   const textInfoLabel = document.querySelector(".text-info-label");
   const textDescriptionCaption = document.querySelector(
     ".text-description-caption"
@@ -44,7 +45,7 @@
   }
 
   function changeInput() {
-    if (input.value.length > 6) {
+    if (input.value.length > 0) {
       buttonEncriptar.disabled = false;
       buttonDesEncriptar.disabled = false;
     } else {
