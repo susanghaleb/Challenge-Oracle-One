@@ -32,12 +32,17 @@
           />
         </svg>
       </div>
-      <div></div>
-      <textarea id="box" class="box-text-area" aria-colspan="texto" placeholder="Ingrese el texto aqui" rows=3 cols=20 >
-
+      <textarea
+        id="box"
+        class="box-text-area"
+        aria-colspan="texto"
+        placeholder="Ingrese el texto aqui"
+        rows="3"
+        cols="20"
+      >
       </textarea>
 
-      <div class= wrap-text>
+      <div class="wrap-text">
         <svg
           class="exclamation"
           viewBox="0 0 16 16"
@@ -52,23 +57,22 @@
         <p class="instructions">Solo letras minúsculas y sin acentos</p>
       </div>
       <div class="section-buttons">
-
-        <button type="button" class="btn btn-primary btn-encriptar">Encriptar</button>
-        <button type="button" class="btn btn-outlined">Desencriptar</button>
-
+        <button type="button" class="btn btn-primary btn-encriptar" id="encriptar" disabled>
+          Encriptar
+        </button>
+        <button type="button" class="btn btn-outlined" id="desencriptar" disabled>Desencriptar</button>
       </div>
 
       <div class="box-text-info">
-        <p class="text-info">Ningún mensaje fue encontrado</p>
-        <p class="text-input">Ingresa el texto que desees encriptar o desencriptar.</p>
+        <p class="text-info-label">Ningún mensaje fue encontrado</p>
+        <p class="text-description-caption">
+          Ingresa el texto que desees encriptar o desencriptar.
+        </p>
+
+        <textarea name="textinputsalida" id="text-input-salida"></textarea>
+        <button id="copy" class="btn btn-outlined hidden">Copiar</button>
       </div>
     </main>
     <script src="./index.js"></script>
-
-    <footer class="pie">
-      <div class="post-footer">
-          by Suzanne Ghaleb de Celis | susanaghaleb@gmail.com | alura challenge
-      </div>
-  </footer>
   </body>
 </html>

@@ -1,31 +1,60 @@
 (() => {
-    'uses-strict'
-    console.log('load script correctly')
-})()
+  const input = document.getElementById("box");
+  const textInfoLabel = document.querySelector(".text-info-label");
+  const textDescriptionCaption = document.querySelector(
+    ".text-description-caption"
+  );
 
+  const buttonEncriptar = document.getElementById("encriptar");
+  const buttonDesEncriptar = document.getElementById("desencriptar");
+  const buttonCopy = document.getElementById("copy");
 
-function encriptar (){
-    var texto = document.querySelector("#input-text").value;
-    var textoCifrado = texto.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
-    document.querySelector(".text-input-salida").value = textoCifrado;
-    document.querySelector("#input-text").value;
-}
+  function encriptar() {
+    const textoCifrado = input.value
+      .replace(/e/gi, "enter")
+      .replace(/i/gi, "imes")
+      .replace(/a/gi, "ai")
+      .replace(/o/gi, "ober")
+      .replace(/u/gi, "ufat");
+    document.getElementById("text-input-salida").value = textoCifrado;
+    textInfoLabel.classList.add("hidden");
+    textDescriptionCaption.classList.add("hidden");
+    buttonCopy.classList.remove("hidden");
+    buttonCopy.classList.add("show");
+    input.value = "";
+  }
 
-var botonEncriptar = document.querySelector("#boton-encriptar"); botonEncriptar.onclick = encriptar;
+  function desEncriptar() {
+    const texto = input.value;
+    const textoCifrado = texto
+      .replace(/enter/gi, "e")
+      .replace(/imes/gi, "i")
+      .replace(/ai/gi, "a")
+      .replace(/ober/gi, "o")
+      .replace(/ufat/gi, "u");
+    document.getElementById("text-input-salida").value = textoCifrado;
+    input.value = "";
+  }
 
-function desencriptar (){ 
-    var texto = document.querySelector("#input-text").value; 
-    var textoCifrado = texto.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u"); 
-    document.querySelector(".text-input-salida").value = textoCifrado; 
-    document.querySelector("#input-text").value;
-}
+  function copiar() {
+    var copyText = document.getElementById("text-input-salida");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    navigator.clipboard.writeText(copyText.value);
+  }
 
-var botonDesencriptar = document.querySelector("#boton-desencriptar"); botonDesencriptar.onclick = desencriptar;
+  function changeInput() {
+    if (input.value.length > 6) {
+      buttonEncriptar.disabled = false;
+      buttonDesEncriptar.disabled = false;
+    } else {
+      buttonEncriptar.disabled = true;
+      buttonDesEncriptar.disabled = true;
+    }
+  }
 
-
-function copiar() {
-    navigator.clipboard.writeText(
-        document.getElementById("encrypted-text").value
-    );
-}
-document.querySelector("#boton-copiar").addEventListener("click", copiar);
+  buttonEncriptar.addEventListener("click", encriptar);
+  buttonDesEncriptar.addEventListener("click", desEncriptar);
+  buttonCopy.addEventListener("click", copiar);
+  input.addEventListener("input", changeInput);
+})();
